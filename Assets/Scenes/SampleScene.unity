@@ -10754,6 +10754,8 @@ GameObject:
   - component: {fileID: 6982628076929039057}
   - component: {fileID: 7021440489482254693}
   - component: {fileID: 7021440489482254695}
+  - component: {fileID: 7021440489482254698}
+  - component: {fileID: 7021440489482254697}
   m_Layer: 0
   m_Name: UMADynamicCharacterAvatar
   m_TagString: Untagged
@@ -10874,3 +10876,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7021440489482254697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982628076939815837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f544163b277ea14584379e6c7ceb69d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heightSlider: {fileID: 1825191023}
+  muscleSlider: {fileID: 689622860}
+  weightSlider: {fileID: 1828261009}
+--- !u!114 &7021440489482254698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982628076939815837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b6937f9ae925549b4d61c2ec0e3084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
