@@ -9,8 +9,13 @@ public class CharacterCreator : MonoBehaviour
 {
     private DynamicCharacterAvatar characterAvatar;
     private Dictionary<string, DnaSetter> DNA;
+
     [SerializeField]
     private Slider heightSlider, muscleSlider, weightSlider;
+    [SerializeField]
+    private UMAWardrobeRecipe[] maleHair, femaleHair;
+    [SerializeField]
+    private Color[] skinColors;
 
     private void Start()
     {
@@ -20,6 +25,33 @@ public class CharacterCreator : MonoBehaviour
         heightSlider.onValueChanged.AddListener(OnHeightChange);
         muscleSlider.onValueChanged.AddListener(OnMuscleChange);
         weightSlider.onValueChanged.AddListener(OnWeightChange);
+    }
+    private void OnDisable()
+    {
+        characterAvatar.CharacterUpdated.RemoveListener(OnCharacterUpdated);
+        characterAvatar.CharacterCreated.RemoveListener(OnCharacterCreated);
+        heightSlider.onValueChanged.RemoveListener(OnHeightChange);
+        muscleSlider.onValueChanged.RemoveListener(OnMuscleChange);
+        weightSlider.onValueChanged.RemoveListener(OnWeightChange);
+    }
+
+    public void ChangeHair(int hair)
+    {
+        if(characterAvatar.activeRace.name == "HumanMaleDCS")
+        {
+            characterAvatar.SetSlot(maleHair[hair]);
+        }
+        if (characterAvatar.activeRace.name == "HumanFemaleDCS")
+        {
+            characterAvatar.SetSlot(femaleHair[hair]);
+        }
+
+        characterAvatar.BuildCharacter();
+    }
+    public void ChangeSkinColor(int skinColor)
+    {
+        characterAvatar.SetColor("Skin", skinColors[skinColor]);
+        characterAvatar.UpdateColors(true);
     }
 
     void OnCharacterCreated(UMAData data)
