@@ -53,6 +53,15 @@ public class CharacterCreator : MonoBehaviour
         characterAvatar.SetColor("Skin", skinColors[skinColor]);
         characterAvatar.UpdateColors(true);
     }
+    public void ChangeSex(int sex)
+    {
+        characterAvatar.ChangeRace(sex == 0 ? "HumanFemaleDCS" : "HumanMaleDCS");
+        characterAvatar.BuildCharacter();
+    }
+    public void SaveCharacter()
+    {
+        PlayerPrefs.SetString("CharacterData", characterAvatar.GetCurrentRecipe());
+    }
 
     void OnCharacterCreated(UMAData data)
     {
@@ -60,7 +69,8 @@ public class CharacterCreator : MonoBehaviour
     }
     void OnCharacterUpdated(UMAData data)
     {
-
+        DNA = characterAvatar.GetDNA();
+        UpdateSliders();
     }
 
     void OnHeightChange(float height)
@@ -79,5 +89,11 @@ public class CharacterCreator : MonoBehaviour
         DNA["lowerWeight"].Set(weight);
         DNA["upperWeight"].Set(weight);
         characterAvatar.BuildCharacter();
+    }
+    void UpdateSliders()
+    {
+        heightSlider.value = DNA["height"].Get();
+        weightSlider.value = DNA["upperWeight"].Get();
+        muscleSlider.value = DNA["upperMuscle"].Get();
     }
 }
